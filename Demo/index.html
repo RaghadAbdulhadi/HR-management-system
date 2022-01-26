@@ -26,10 +26,51 @@
     </header>
     <!--Main render the information for each employee from javascript-->
     <main>
-        <script src="/Demo/js/app.js"></script>
+        <form id="newEmployee">
+            <fieldset>
+                <legend>New Employee</legend>
+                <!-- <label for="employeeId">Emplyee Id</label>
+                <input type="text" name="employeeId" id="employeeId" placeholder="Emplyee Id">
+                <br>
+                <br> -->
+                <label for="fullName">Full Name</label>
+                <input type="text" name="fullName" id="fullName" placeholder="Full Name">
+                <br>
+                <br>
+                <label for="department">Department</label>
+                <select name="department" id="department" placeholder="Department">
+                    <option value="" selected disabled hidden>Choose the Department</option>
+                    <option value="administration">Administration</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="development">Development</option>
+                    <option value="financedepa">Financedepa</option>
+                </select>
+                <br>
+                <br>
+                <label for="level">Level</label>
+                <select name="level" id="level">
+                    <option value="" selected disabled hidden>Choose the Level</option>
+                    <option value="junior">Junior</option>
+                    <option value="mid-senior">Mid-Senior</option>
+                    <option value="senior">Senior</option>
+                </select>
+                <br>
+                <br>
+                <label for="imageUrl">Image URL</label>
+                <input type="url" name="imageUrl" id="imageUrl" placeholder="Image Link">
+                <br>
+                <br>
+                <!-- <button type="value" name="submit" id="submit">Submit</button> -->
+                <input type="submit" value= "submit">
+            </fieldset> 
+        </form>
+        <section id="addEmployeeSection">
+
+        </section>
     </main>
     <!--Footer will have some social media links with copyright-->
     <footer>
+        <script src="/Demo/js/app.js"></script>
         <section class="social-media">
             <div class="contact-us">
                 <p id="contact-us-parag">Contact Us</p>
@@ -53,5 +94,6 @@
         </div>
     </footer>
 </body>
+
 
 </html>
