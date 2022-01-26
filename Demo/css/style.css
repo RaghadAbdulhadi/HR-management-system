@@ -1,0 +1,21 @@
+header .nav-links {
+    float: right;
+}
+
+
+
+.nav-links ul li {
+    list-style: none;
+    display: inline;
+    padding: 10px;
+  }
+
+
+
+
+
+#addEmployeeSection div {
+    background-color: red;
+    width: 15em;
+}
+
