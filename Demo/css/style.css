@@ -1,21 +1,26 @@
-header .nav-links {
-    float: right;
-}
 
 
 
 .nav-links ul li {
     list-style: none;
-    display: inline;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
     padding: 10px;
   }
 
 
+#newEmployee {
+    justify-content: center;
+}
 
 
 
 #addEmployeeSection div {
     background-color: red;
+
     width: 15em;
 }
+
+
 
