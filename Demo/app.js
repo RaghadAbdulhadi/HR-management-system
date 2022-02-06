@@ -12,7 +12,6 @@ function GenerateEmployee(emplyeeId, fullName, department, level, imageUrl) {
     this.imageUrl = imageUrl;
     //push new object instances
     allEmployees.push(this);
-
 }
 
 let min = 0;
