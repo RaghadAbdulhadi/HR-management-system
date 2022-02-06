@@ -1,5 +1,9 @@
 'use strict';
 let newEmployeeCard = document.getElementById('addEmployeeSection');
+//All instances of new constructor function objects inside one Array
+//GenerateEmployee.allEmployees each new instance in a seperated Array
+
+let allEmployees = [];
 function GenerateEmployee(emplyeeId, fullName, department, level, imageUrl) {
     this.emplyeeId = emplyeeId;
     this.fullName = fullName;
@@ -7,11 +11,9 @@ function GenerateEmployee(emplyeeId, fullName, department, level, imageUrl) {
     this.level = level;
     this.imageUrl = imageUrl;
     //push new object instances
-    GenerateEmployee.allEmployees.push(this);
+    allEmployees.push(this);
 }
 
-
-GenerateEmployee.allEmployees = [];
 let min = 0;
 let max = 0;
 
@@ -40,9 +42,8 @@ function emplyeeId() {
 
 function render() {
     let employees;
-
-    for (let i = 0; i < GenerateEmployee.allEmployees.length; i++) {
-        employees = GenerateEmployee.allEmployees[i];
+    for (let i = 0; i < allEmployees.length; i++) {
+        employees = allEmployees[i];
 
         //Create a div to contain the employees information
         let employeeCard = document.createElement('div');
@@ -79,81 +80,12 @@ function render() {
         let employeeSalary = document.createElement('p');
         employeeCard.appendChild(employeeSalary);
         employeeSalary.textContent = `Salary: ${employees.salary}`;
+
+
     }
-    //Add table layout
-    let tableLayout = document.createElement('table');
-    newEmployeeCard.appendChild(tableLayout);
-
-    //Row#1
-    let tableRow1 = document.createElement('tr');
-    tableLayout.appendChild(tableRow1);
-
-    //Row#1 - Department
-    let tableHead1 = document.createElement('th');
-    tableRow1.appendChild(tableHead1);
-    tableHead1.textContent = 'Department';
-
-    //Row#1 - # of employees
-    let tableHead2 = document.createElement('th');
-    tableRow1.appendChild(tableHead2);
-    tableHead2.textContent = '# of Employees';
-
-    //Row#1 - Total Salary
-    let tableHead3 = document.createElement('th');
-    tableRow1.appendChild(tableHead3);
-    tableHead3.textContent = 'Total Salary';
-
-    //Row#1 - Average
-    let tableHead4 = document.createElement('th');
-    tableRow1.appendChild(tableHead4);
-    tableHead4.textContent = 'Average';
-
-    //Row#2 
-    let tableRow2 = document.createElement('tr');
-    tableLayout.appendChild(tableRow2);
-
-    //Row#2 - Administration
-    let tableHead5 = document.createElement('th');
-    tableRow2.appendChild(tableHead5);
-    tableHead5.textContent = 'Administration';
-
-    //Row#2 - Total Number of the employees in Administration department
-    let tableEmpAdm = document.createElement('td');
-    tableRow2.appendChild(tableEmpAdm);
-    let sumdep = 0;
-    for (let j = 0; j < GenerateEmployee.allEmployees.length; j++) {
-        if (GenerateEmployee.allEmployees[j].department == "Administration") {
-            sumdep = sumdep + 1;
-            tableEmpAdm.textContent = sumdep;
-        }
-    }
-
-    //Row#3 - Total Salary of the employees in Administration department
-    let tableTotalSalaryAdm = document.createElement('td');
-    tableRow2.appendChild(tableTotalSalaryAdm);
-    let EmpSalarySum = 0;
-    for (let i = 0; i < GenerateEmployee.allEmployees.length; i++) {
-        if (GenerateEmployee.allEmployees[i].department == "Administration") {
-            let EmpSalary = allEmployees[i].salary;
-            EmpSalarySum += EmpSalary
-            tableTotalSalaryAdm.textContent = EmpSalarySum;
-            console.log(EmpSalary)
-            this.salary();
-        }
-    }
-
-    //Row#3 - Total Salary of the employees in Administration department
-    let tableAvgSalaryAdm = document.createElement('td');
-    tableRow2.appendChild(tableAvgSalaryAdm);
-    let avgSalary = EmpSalarySum/sumdep;
-    tableAvgSalaryAdm.textContent = avgSalary;
-    //console.log(avgSalary);
-
-
-
-
 }
-if (localStorage.getItem('employee') === null) {
+
+//if (localStorage.getItem('employee') === null) {
     let employeeOne = new GenerateEmployee(1000, 'Ghazi Samer', 'Administration', 'Senior', './images/GhaziSamer.jpg');
     let employeeTwo = new GenerateEmployee(1001, 'Lana Ali', 'Finance', 'Senior', './images/LanaAli.jpg');
     let employeeThree = new GenerateEmployee(1002, 'Tamara Ayoub', 'Marketing', 'Senior', './images/TamaraAyoub.jpg');
@@ -167,7 +99,7 @@ if (localStorage.getItem('employee') === null) {
         employeess[i].salary();
     }
 
-}
+//}
 
 //Event
 let newEmployee = document.getElementById('newEmployee');
@@ -190,7 +122,7 @@ function addNewEmployee(event) {
 
 //Local Storage
 function settingItem() {
-    let data = JSON.stringify(GenerateEmployee.allEmployees);
+    let data = JSON.stringify(allEmployees);
     localStorage.setItem('employee', data);
 }
 
@@ -198,7 +130,7 @@ function gettingItem() {
     let stringObj = localStorage.getItem('employee');
     let parsObj = JSON.parse(stringObj);
     if (parsObj !== null) {
-        GenerateEmployee.allEmployees = parsObj;
+        allEmployees = parsObj;
     }
     render();
 }
