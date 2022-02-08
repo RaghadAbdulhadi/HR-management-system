@@ -71,7 +71,7 @@ function render2() {
   let EmpSalarySumAd = 0;
   for (let i = 0; i < newArr.length; i++) {
     if (newArr[i].department == "Administration") {
-      let EmpSalary = newArr[i].salary;
+      let EmpSalary = newArr[i].netSalary;
       EmpSalarySumAd = Math.floor(EmpSalarySumAd + EmpSalary);
       tableTotalSalaryAdm.textContent = EmpSalarySumAd;
     }
@@ -110,7 +110,7 @@ function render2() {
   let EmpSalarySumMa = 0;
   for (let i = 0; i < newArr.length; i++) {
     if (newArr[i].department == "Marketing") {
-      let EmpSalary = newArr[i].salary;
+      let EmpSalary = newArr[i].netSalary;
       EmpSalarySumMa =  Math.floor(EmpSalarySumMa + EmpSalary);
       tableTotalSalaryMark.textContent = EmpSalarySumMa;
     }
@@ -149,7 +149,7 @@ function render2() {
   let EmpSalarySumDev = 0;
   for (let i = 0; i < newArr.length; i++) {
     if (newArr[i].department == "Development") {
-      let EmpSalary = newArr[i].salary;
+      let EmpSalary = newArr[i].netSalary;
       EmpSalarySumDev = Math.floor(EmpSalarySumDev + EmpSalary);
       tableTotalSalaryDeve.textContent = EmpSalarySumDev;
     }
@@ -190,7 +190,7 @@ function render2() {
   let EmpSalarySumFi = 0;
   for (let i = 0; i < newArr.length; i++) {
     if (newArr[i].department == "Finance") {
-      let EmpSalary = newArr[i].salary;
+      let EmpSalary = newArr[i].netSalary;
       EmpSalarySumFi = Math.floor(EmpSalarySumFi + EmpSalary);
       tableTotalSalaryFin.textContent = EmpSalarySumFi;
     }
