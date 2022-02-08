@@ -5,6 +5,7 @@ function GenerateEmployee(emplyeeId, fullName, department, level) {
     this.department = department;
     this.level = level;
     this.imageUrl = `./images/${this.fullName}.PNG`;
+    this.netSalary = 0;
 }
 
 
@@ -26,12 +27,12 @@ GenerateEmployee.prototype.salary = function () {
     }
     let randomSalary = Math.floor(Math.random() * (max - min) + min);
     let tax = randomSalary * 0.075;
-    this.salary = randomSalary - tax;
+    this.netSalary = randomSalary - tax;
 }
 
 GenerateEmployee.prototype.render = function () {
     document.write(`<p>${this.fullName}</p>`);
-    document.write(`<p>${this.salary}</p>`);
+    document.write(`<p>${this.netSalary}</p>`);
 
 }
 
