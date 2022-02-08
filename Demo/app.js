@@ -4,14 +4,16 @@ let newEmployeeCard = document.getElementById('addEmployeeSection');
 //GenerateEmployee.allEmployees each new instance in a seperated Array
 
 let allEmployees = [];
-function GenerateEmployee(emplyeeId, fullName, department, level, imageUrl) {
+function GenerateEmployee(emplyeeId, fullName, department, level, imageUrl, salary) {
     this.emplyeeId = emplyeeId;
     this.fullName = fullName;
     this.department = department;
     this.level = level;
     this.imageUrl = imageUrl;
+    this.netSalary = 0;
     //push new object instances
     allEmployees.push(this);
+    
 }
 
 let min = 0;
@@ -33,8 +35,10 @@ GenerateEmployee.prototype.salary = function () {
     }
     let randomSalary = Math.floor(Math.random() * (max - min) + min);
     let tax = randomSalary * 0.075;
-    this.salary = randomSalary - tax;
+    this.netSalary = randomSalary - tax;
 }
+
+
 //Random Id Number
 function emplyeeId() {
     return Math.floor(Math.random() * 899999 + 100000);
@@ -79,7 +83,7 @@ function render() {
         //Add Salary
         let employeeSalary = document.createElement('p');
         employeeCard.appendChild(employeeSalary);
-        employeeSalary.textContent = `Salary: ${employees.salary}`;
+        employeeSalary.textContent = `Salary: ${employees.netSalary}`;
 
 
     }
@@ -113,11 +117,12 @@ function addNewEmployee(event) {
     let level = event.target.level.value;
     let imageUrl = event.target.imageUrl.value;
     console.log(fullName, department, level, imageUrl);
+    
     let EmployeesNewCard = new GenerateEmployee(emplyeeId(), fullName, department, level, imageUrl);
-    settingItem();
     EmployeesNewCard.salary();
     newEmployeeCard.innerHTML = "";
     render();
+    settingItem();
 }
 
 //Local Storage
